@@ -16,10 +16,7 @@ const pearls = ['pearl1', 'pearl2', 'pearl3'];
 
 let pick = getRandomItem(pearls);
 /* Actions */
-function loadPage() {
-    displayShells();
-    displayGuess();
-}
+function loadPage() {}
 
 function displayShells(userGuess) {
     gameState = 'results';
@@ -35,12 +32,15 @@ function displayPearl() {
     if (gameState === 'results') {
         if (pick === 'pearl1') {
             pearl1.classList.remove('hidden');
+            shell1.classList.add('reveal');
         } else {
             if (pick === 'pearl2') {
                 pearl2.classList.remove('hidden');
+                shell2.classList.add('reveal');
             } else {
                 pick === 'pearl3';
                 pearl3.classList.remove('hidden');
+                shell3.classList.add('reveal');
             }
         }
     }
@@ -69,6 +69,15 @@ function displayGuess() {
     }
 }
 // event listeners
+guess1.addEventListener('click', () => {
+    displayShells('guess1');
+});
+guess2.addEventListener('click', () => {
+    displayShells('guess2');
+});
+guess3.addEventListener('click', () => {
+    displayShells('guess3');
+});
 
 /* Run page load code */
 loadPage();
