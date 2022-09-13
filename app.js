@@ -33,6 +33,7 @@ function displayShells() {
 
 function loadPage() {
     displayShells();
+    displayScore();
 }
 
 function chooseShells(userGuess) {
@@ -86,29 +87,45 @@ function displayGuess() {
     }
 }
 
+let wins = document.getElementById('wins-display');
+let losses = document.getElementById('losses-display');
+let total = document.getElementById('total-display');
+
+function displayScore() {
+    wins.writeIn = wins;
+    losses.writeIn = losses;
+    total.writeIn = losses + wins;
+}
+
 // event listeners
 guess1.addEventListener('click', () => {
     chooseShells('guess1');
     if (pick === 'pearl1') {
         disp1.innerHTML = 'Found it!';
+        wins + 1;
     } else {
         disp1.innerHTML = 'Not Here';
+        losses + 1;
     }
 });
 guess2.addEventListener('click', () => {
     chooseShells('guess2');
     if (pick === 'pearl2') {
         disp2.innerHTML = 'Found it!';
+        wins++;
     } else {
         disp2.innerHTML = 'Not Here';
+        losses++;
     }
 });
 guess3.addEventListener('click', () => {
     chooseShells('guess3');
     if (pick === 'pearl3') {
         disp3.innerHTML = 'Found it!';
+        wins++;
     } else {
         disp3.innerHTML = 'Not Here';
+        losses++;
     }
 });
 
