@@ -10,15 +10,32 @@ let shell3 = document.getElementById('shell-3');
 let pearl1 = document.getElementById('pearl-1');
 let pearl2 = document.getElementById('pearl-2');
 let pearl3 = document.getElementById('pearl-3');
+let disp1 = document.getElementById('display-1');
+let disp2 = document.getElementById('display-2');
+let disp3 = document.getElementById('display-3');
 
 /* probability array */
 const pearls = ['pearl1', 'pearl2', 'pearl3'];
 
 let pick = getRandomItem(pearls);
 /* Actions */
-function loadPage() {}
+function displayShells() {
+    shell1.classList.remove('reveal');
+    shell2.classList.remove('reveal');
+    shell3.classList.remove('reveal');
+    pearl1.classList.add('hidden');
+    pearl2.classList.add('hidden');
+    pearl3.classList.add('hidden');
+    disp1.classList.remove('win', 'loss');
+    disp2.classList.remove('win', 'loss');
+    disp3.classList.remove('win', 'loss');
+}
 
-function displayShells(userGuess) {
+function loadPage() {
+    displayShells();
+}
+
+function chooseShells(userGuess) {
     gameState = 'results';
     guess = userGuess;
     pick = getRandomItem(pearls);
@@ -70,13 +87,24 @@ function displayGuess() {
 }
 // event listeners
 guess1.addEventListener('click', () => {
-    displayShells('guess1');
+    chooseShells('guess1');
 });
 guess2.addEventListener('click', () => {
-    displayShells('guess2');
+    chooseShells('guess2');
 });
 guess3.addEventListener('click', () => {
-    displayShells('guess3');
+    chooseShells('guess3');
+});
+
+let replay = document.getElementById('play-again-button');
+
+function playAgain() {
+    gameState = 'guess';
+    loadPage();
+}
+
+replay.addEventListener('click', () => {
+    playAgain();
 });
 
 /* Run page load code */
