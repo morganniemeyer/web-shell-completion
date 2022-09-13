@@ -26,9 +26,9 @@ function displayShells() {
     pearl1.classList.add('hidden');
     pearl2.classList.add('hidden');
     pearl3.classList.add('hidden');
-    disp1.classList.remove('win', 'loss');
-    disp2.classList.remove('win', 'loss');
-    disp3.classList.remove('win', 'loss');
+    disp1.innerHTML = '';
+    disp2.innerHTML = '';
+    disp3.innerHTML = '';
 }
 
 function loadPage() {
@@ -38,7 +38,7 @@ function loadPage() {
 function chooseShells(userGuess) {
     gameState = 'results';
     guess = userGuess;
-    pick = getRandomItem(pearls);
+    pick;
     displayPearl();
     displayGuess();
 }
@@ -85,15 +85,31 @@ function displayGuess() {
         }
     }
 }
+
 // event listeners
 guess1.addEventListener('click', () => {
     chooseShells('guess1');
+    if (pick === 'pearl1') {
+        disp1.innerHTML = 'Found it!';
+    } else {
+        disp1.innerHTML = 'Not Here';
+    }
 });
 guess2.addEventListener('click', () => {
     chooseShells('guess2');
+    if (pick === 'pearl2') {
+        disp2.innerHTML = 'Found it!';
+    } else {
+        disp2.innerHTML = 'Not Here';
+    }
 });
 guess3.addEventListener('click', () => {
     chooseShells('guess3');
+    if (pick === 'pearl3') {
+        disp3.innerHTML = 'Found it!';
+    } else {
+        disp3.innerHTML = 'Not Here';
+    }
 });
 
 let replay = document.getElementById('play-again-button');
